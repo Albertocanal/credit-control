@@ -31,7 +31,7 @@ class SaleOrder(models.Model):
                     partner.risk_sale_order_limit):
                 exception_msg = _(
                     "This sale order exceeds the sales orders risk.\n")
-            elif partner.risk_sale_order_include and (
+            elif partner.risk_sale_order_include and partner.credit_limit and (
                     (partner.risk_total + risk_amount) >
                     partner.credit_limit):
                 exception_msg = _(

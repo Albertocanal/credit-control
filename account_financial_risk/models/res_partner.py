@@ -231,7 +231,7 @@ class ResPartner(models.Model):
             partner = self.browse(
                 group["commercial_partner_id"][0], self._prefetch)
             amount = group["amount_total_company_signed"]
-            company_currency = self.env['res.company'].browse(
+            company_currency = self.sudo().env['res.company'].browse(
                 group['company_id'][0]).currency_id
             partner.risk_invoice_draft = company_currency.compute(
                 amount, partner.risk_currency_id, round=False)
